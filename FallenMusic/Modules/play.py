@@ -76,7 +76,7 @@ async def play(_, message: Message):
             get = await app.get_chat_member(message.chat.id, ASS_ID)
         except ChatAdminRequired:
             return await fallen.edit_text(
-                f"⎊ اديني صلاحية الاضافة علشان اضيف المساعد {BOT_NAME} ᴀssɪsᴛᴀɴᴛ ᴛᴏ {message.chat.title}."
+                f"⎊ انطيني مشرف حتى اضيف المساعد {BOT_NAME} ᴀssɪsᴛᴀɴᴛ ᴛᴏ {message.chat.title}."
             )
         if get.status == ChatMemberStatus.BANNED:
             unban_butt = InlineKeyboardMarkup(
@@ -105,7 +105,7 @@ async def play(_, message: Message):
                 invitelink = await app.export_chat_invite_link(message.chat.id)
             except ChatAdminRequired:
                 return await fallen.edit_text(
-                    f"⎊ اديني صلاحية الاضافة علشان اضيف المساعد {BOT_NAME} ᴀssɪsᴛᴀɴᴛ ᴛᴏ {message.chat.title}."
+                    f"⎊ انطيني مشرف حتى اضيف المساعد {BOT_NAME} ᴀssɪsᴛᴀɴᴛ ᴛᴏ {message.chat.title}."
                 )
             except Exception as ex:
                 return await fallen.edit_text(
@@ -143,7 +143,7 @@ async def play(_, message: Message):
     if audio:
         if round(audio.duration / 60) > DURATION_LIMIT:
             raise DurationLimitError(
-                f"⎊ فشل التشغيل بسبب ان الاغنيه طويلة {DURATION_LIMIT} شغل اغنيه تانية {BOT_NAME}."
+                f"⎊ فشل التشغيل بسبب ان الاغنيه طويلة {DURATION_LIMIT} شغل اغنيه ثانيه {BOT_NAME}."
             )
 
         file_name = get_file_name(audio)
@@ -177,7 +177,7 @@ async def play(_, message: Message):
         file_path = audio_dl(url)
     else:
         if len(message.command) < 2:
-            return await fallen.edit_text("⎊ اكتب اسم الاغنيه اللي عايز تشغلها")
+            return await fallen.edit_text("⎊ اكتب اسم الاغنيه اللي تريد تشغلها")
         await fallen.edit_text("⎊ جارٍ التشغيل ⚡")
         query = message.text.split(None, 1)[1]
         try:
@@ -198,7 +198,7 @@ async def play(_, message: Message):
 
         if (dur / 60) > DURATION_LIMIT:
             return await fallen.edit(
-                f"⎊ فشل التشغيل بسبب ان الاغنية طويلة {DURATION_LIMIT} شغل اغنية تانية {BOT_NAME}.."
+                f"⎊ فشل التشغيل بسبب ان الاغنية طويلة {DURATION_LIMIT} شغل اغنية ثانيه {BOT_NAME}.."
             )
         file_path = audio_dl(url)
 
@@ -250,7 +250,7 @@ async def play(_, message: Message):
         await add_active_chat(message.chat.id)
         await message.reply_photo(
             photo=imgt,
-            caption=f"‌‌‏‌‌‏‌‌‏≪⊶⌯━‌‌‏♢ ⦓ ᥉᥆ᥙᖇᥴᥱ ƚᥱƚ᥆ ⦔ ♢━‌‌‏⌯⊷≫\n**⎊ تـم الـتـشـغـيـل ✅**\n\n⎊ **العنوان :** [{title[:27]}](https://t.me/{BOT_USERNAME}?start=info_{videoid})\n⎊ **المده :** `{duration}` دقيقه\n⎊ **بواسطه :** {ruser}\n‌‌‏‌‌‏‌‌‏≪⊶⌯━‌‌‏♢ ⦓ ᥉᥆ᥙᖇᥴᥱ ƚᥱƚ᥆ ⦔ ♢━‌‌‏⌯⊷≫",
+            caption=f"‌‌‏‌‌‏‌‌‏≪⊶⌯━‌‌‏♢ ⦓ 𓏺𝘴𝘰𝘶𝙍𝘤𝘦 𝙏𝘦𝘰 . ⦔ ♢━‌‌‏⌯⊷≫\n**⎊ تـم الـتـشـغـيـل ✅**\n\n⎊ **العنوان :** [{title[:27]}](https://t.me/{BOT_USERNAME}?start=info_{videoid})\n⎊ **المده :** `{duration}` دقيقه\n⎊ **بواسطه :** {ruser}\n‌‌‏‌‌‏‌‌‏≪⊶⌯━‌‌‏♢ ⦓ 𓏺𝘴𝘰𝘶𝙍𝘤𝘦 𝙏𝘦𝘰 . ⦔ ♢━‌‌‏⌯⊷≫",
             reply_markup=buttons,
         )
 
